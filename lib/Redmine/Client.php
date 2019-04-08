@@ -604,7 +604,7 @@ class Client
 
         // Content type headers
         $tmp = parse_url($this->url.$path);
-        if ('/uploads.json' === $path || '/uploads.xml' === $path) {
+        if (preg_match('/\/uploads.(json|xml)/i', $path)) {
             $httpHeader[] = 'Content-Type: application/octet-stream';
         } elseif ('json' === substr($tmp['path'], -4)) {
             $httpHeader[] = 'Content-Type: application/json';
